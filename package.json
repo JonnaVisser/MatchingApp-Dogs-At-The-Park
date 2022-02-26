@@ -1,0 +1,36 @@
+{
+  "name": "matchingapp-dogs-at-the-park",
+  "version": "1.0.0",
+  "description": "vind hondenmaatjes in je buurt",
+  "main": "server.js",
+  "directories": {
+    "doc": "docs"
+  },
+  "dependencies": {
+    "camelcase": "^6.3.0",
+    "express": "^4.17.2",
+    "locate-user": "^1.0.2",
+    "nodemon": "^2.0.15"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "woef",
+    "start": "node server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/JonnaVisser/MatchingApp-Dogs-At-The-Park.git"
+  },
+  "keywords": [
+    "mathingapp",
+    "dogs",
+    "hondenmaatjes",
+    "locatie"
+  ],
+  "author": "jonna visser",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/JonnaVisser/MatchingApp-Dogs-At-The-Park/issues"
+  },
+  "homepage": "https://github.com/JonnaVisser/MatchingApp-Dogs-At-The-Park#readme"
+}
