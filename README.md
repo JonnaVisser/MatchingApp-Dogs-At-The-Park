@@ -3,6 +3,6 @@ Zoek je hondemaatje in de buurt en spreek af. Dat is waar matchingapp dogs in th
 
 ## The basics
 
-### How to Install?
+## How to Install?
 
-#### Features
+## Features
