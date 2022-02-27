@@ -15,8 +15,8 @@
     "nodemon": "^2.0.15"
   },
   "scripts": {
-    "test": "nodemon index.js",
-    "start": "node server.js"
+    "start": "nodemon server.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
     "type": "git",
