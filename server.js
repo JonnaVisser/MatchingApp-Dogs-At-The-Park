@@ -7,7 +7,7 @@ const express = require('express')
  * Constants and Variables
  *************************************/
 const app = express();
-const port = 3000;
+const port = 8080;
 const hondenmaatjes= [
     {
         "id": 1,
@@ -72,7 +72,11 @@ app.get('/', (req, res) => {
         doc += `<a href="/hondenmaatjes/${hondenmaatjes.id}/${hondenmaatjes.slug}">more info</a>`
         doc += "</section>";
     });
-  res.send(doc)
+  res.send(doc);
+})
+
+app.get('/hondenmaatjes/:id/:slug', (req, res) => {
+
 })
 
 /*variabele
@@ -86,9 +90,7 @@ app.get('/name/:name', (req, res) => {
 
 
 
-app.listen(port, () => {
-  console.log(`Example app listening on port ${port}`)
-})
+
 
 
 
