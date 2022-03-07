@@ -7,7 +7,7 @@ const express = require('express')
  * Constants and Variables
  *************************************/
 const app = express();
-const port = 8080;
+const port = 3000;
 const hondenmaatjes= [
     {
         "id": 1,
@@ -59,17 +59,19 @@ app.get('/', (req, res) => {
     doc += '<title>Hondenmaatjes</title>'
     doc += '<h1>Hondenmaatjes</h1>'
 
+    console.dir(hondenmaatjes)
+
     hondenmaatjes.forEach(hondenmaatje => {
         doc += "<section>";
         doc += `<h2>${hondenmaatje.name}</h2>`;
         doc += "<h3>years:</h3>";
         doc += `<h3>${hondenmaatje.info}</h3>`;
         doc += "<ul>";
-        hondenmaatjes.years.forEach(years =>{
+        hondenmaatje.years.forEach(years =>{
             doc += `<li>${years}</li>`;
         });
         doc += "</ul>";
-        doc += `<a href="/hondenmaatjes/${hondenmaatjes.id}/${hondenmaatjes.slug}">more info</a>`
+        doc += `<a href="/hondenmaatjes/${hondenmaatje.id}/${hondenmaatje.slug}">more info</a>`
         doc += "</section>";
     });
   res.send(doc);
