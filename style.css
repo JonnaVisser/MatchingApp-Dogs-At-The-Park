@@ -1,60 +1,60 @@
 /***VERWIJDERD BULLETPOINTS VOOR LI***/
 li {
-    list-style-type: none; 
-  }
+   list-style-type: none;
+}
 
- header > ul {
-     display:flex;
-     justify-content: space-between;
-     padding-left: 0;
- } 
+header>ul {
+   display: flex;
+   justify-content: space-between;
+   padding-left: 0;
+}
 
- .profielfotoklein {
-    vertical-align: middle;
-    width: 50px;
-    height: 50px;
-    border-radius: 50%; 
- }
+.profielfotoklein {
+   vertical-align: middle;
+   width: 50px;
+   height: 50px;
+   border-radius: 50%;
+}
 
- .profielfotomiddel {
-    vertical-align: middle;
-    width: 175px;
-    height: 175px;
-    border-radius: 50%;   
- }
+.profielfotomiddel {
+   vertical-align: middle;
+   width: 175px;
+   height: 175px;
+   border-radius: 50%;
+}
 
- .profielfotogroot {
-    vertical-align: middle;
-    width: 275px;
-    height: 275px;
-    border-radius: 50%; 
- }
+.profielfotogroot {
+   vertical-align: middle;
+   width: 275px;
+   height: 275px;
+   border-radius: 50%;
+}
 
- button {
-    background-color: #9C625B;
+button {
+   background-color: #9C625B;
 
- }
+}
 
- button > a {
-     font-size:20px;
-     padding-left: 40px;
-     padding-right: 40px;
-     padding-top: 20px;
-     padding-bottom: 20px;
-     color:white;
-     display: flex;
-     justify-content: center;
-     
- }
+button>a {
+   font-size: 20px;
+   padding-left: 40px;
+   padding-right: 40px;
+   padding-top: 20px;
+   padding-bottom: 20px;
+   color: white;
+   display: flex;
+   justify-content: center;
+
+}
 
 
- /***************************************INDEX.HTML PAGINA*********************************/
+/***************************************INDEX.HTML PAGINA*********************************/
 
- .checkinmain {
-    display: flex;
-    justify-content: center;
-    padding-left: 40px;
-    margin-top: 300px;
+.checkinmain {
+   display: flex;
+   justify-content: center;
+   padding-left: 40px;
+   margin-top: 300px;
 }
 
 .checkinfooter {
