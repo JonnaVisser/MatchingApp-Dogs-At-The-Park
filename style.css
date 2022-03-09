@@ -47,6 +47,13 @@ button>a {
 
 }
 
+h2 {
+   font-family: 'Bentham', serif;
+}
+
+p {
+   font-family: 'Bentham', serif;
+}
 
 /***************************************INDEX.HTML PAGINA*********************************/
 
@@ -55,6 +62,7 @@ button>a {
    justify-content: center;
    padding-left: 40px;
    margin-top: 300px;
+   
 }
 
 .checkinfooter {
