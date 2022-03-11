@@ -51,10 +51,15 @@ const hondenmaatjes = [
   },
 ];
 
+/***************************************
+ * Middleware***************************/
+app.use(express.static('HTML'))
+
 /** **********************************
  * Routes
  ************************************ */
 app.get('/', (req, res) => {
+
   let doc = '<!doctype html>';
   doc += '<title>Hondenmaatjes</title>';
   doc += '<h1>Hondenmaatjes</h1>';
@@ -78,6 +83,8 @@ app.get('/', (req, res) => {
 });
 
 app.get('/hondenmaatjes/:id/:slug', (req, res) => {
+  const id = req.params.id
+  const hondenmaatje = hondenmaatjes.find(element => element.id == id)
 
 });
 
@@ -85,6 +92,12 @@ app.get('/hondenmaatjes/:id/:slug', (req, res) => {
 app.get('/name/:name', (req, res) => {
     res.send(`hello ${req.params.name}`)
   }) */
+
+/*****************************************
+ * 404****************************** */
+app.use( (req, res) =>{
+  res.status(404).send('Error 404: file not found')
+})  
 
 /** *********************************
  * Start Webserver
