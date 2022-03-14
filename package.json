@@ -8,8 +8,10 @@
   },
   "dependencies": {
     "camelcase": "^6.3.0",
+    "ejs": "^3.1.6",
     "express": "^4.17.2",
-    "locate-user": "^1.0.2"
+    "locate-user": "^1.0.2",
+    "slug": "^5.3.0"
   },
   "devDependencies": {
     "eslint": "^8.10.0",

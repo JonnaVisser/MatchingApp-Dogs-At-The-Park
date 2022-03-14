@@ -53,45 +53,26 @@ const hondenmaatjes = [
 
 /***************************************
  * Middleware***************************/
-app.use(express.static('HTML'))
+app.use(express.static('public'))
+app.use('/css', express.static(__dirname + 'public/css'))
+app.use('/js', express.static(__dirname + 'public/js'))
+app.use('/img', express.static(__dirname + 'public/img'))
 
 /** **********************************
  * Routes
  ************************************ */
+app.set('views', './views')
+app.set('view engine', 'ejs')
+
 app.get('/', (req, res) => {
+res.render('index', { text: 'check in'})
+});
 
-  let doc = '<!doctype html>';
-  doc += '<title>Hondenmaatjes</title>';
-  doc += '<h1>Hondenmaatjes</h1>';
-
-  console.dir(hondenmaatjes);
-
-  hondenmaatjes.forEach((hondenmaatje) => {
-    doc += '<section>';
-    doc += `<h2>${hondenmaatje.name}</h2>`;
-    doc += '<h3>years:</h3>';
-    doc += `<h3>${hondenmaatje.info}</h3>`;
-    doc += '<ul>';
-    hondenmaatje.years.forEach((years) => {
-      doc += `<li>${years}</li>`;
-    });
-    doc += '</ul>';
-    doc += `<a href="/hondenmaatjes/${hondenmaatje.id}/${hondenmaatje.slug}">more info</a>`;
-    doc += '</section>';
+app.get('/overzicht', (req, res) => {
+  res.render('overzicht')
   });
-  res.send(doc);
-});
 
-app.get('/hondenmaatjes/:id/:slug', (req, res) => {
-  const id = req.params.id
-  const hondenmaatje = hondenmaatjes.find(element => element.id == id)
 
-});
-
-/* variabele
-app.get('/name/:name', (req, res) => {
-    res.send(`hello ${req.params.name}`)
-  }) */
 
 /*****************************************
  * 404****************************** */
@@ -105,3 +86,39 @@ app.use( (req, res) =>{
 app.listen(port, () => {
   console.log(`web server  running on http://localhost:${port}`);
 });
+
+
+
+
+
+  // let doc = '<!doctype html>';
+  // doc += '<title>Hondenmaatjes</title>';
+  // doc += '<h1>Hondenmaatjes</h1>';
+
+  // console.dir(hondenmaatjes);
+
+  // hondenmaatjes.forEach((hondenmaatje) => {
+  //   doc += '<section>';
+  //   doc += `<h2>${hondenmaatje.name}</h2>`;
+  //   doc += '<h3>years:</h3>';
+  //   doc += `<h3>${hondenmaatje.info}</h3>`;
+  //   doc += '<ul>';
+  //   hondenmaatje.years.forEach((years) => {
+  //     doc += `<li>${years}</li>`;
+  //   });
+  //   doc += '</ul>';
+  //   doc += `<a href="/hondenmaatjes/${hondenmaatje.id}/${hondenmaatje.slug}">more info</a>`;
+  //   doc += '</section>';
+  // });
+  // res.send(doc);
+
+  // app.get('/hondenmaatjes/:id/:slug', (req, res) => {
+//   const id = req.params.id
+//   const hondenmaatje = hondenmaatjes.find(element => element.id == id)
+
+// });
+
+/* variabele
+app.get('/name/:name', (req, res) => {
+    res.send(`hello ${req.params.name}`)
+  }) */
