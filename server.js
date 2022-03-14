@@ -54,22 +54,23 @@ const hondenmaatjes = [
 /***************************************
  * Middleware***************************/
 app.use(express.static('public'))
-app.use('/css', express.static(__dirname + 'public/css'))
-app.use('/js', express.static(__dirname + 'public/js'))
-app.use('/img', express.static(__dirname + 'public/img'))
+app.use('/css', express.static(__dirname + 'public/css'));
+app.use('/js', express.static(__dirname + 'public/js'));
+app.use('/images', express.static(__dirname + 'public/images'));
 
 /** **********************************
  * Routes
  ************************************ */
-app.set('views', './views')
-app.set('view engine', 'ejs')
+app.set('view engine', 'ejs');
+app.set('views', './views');
+
 
 app.get('/', (req, res) => {
-res.render('index', { text: 'check in'})
+res.render('index.ejs');
 });
 
 app.get('/overzicht', (req, res) => {
-  res.render('overzicht')
+  res.render('overzicht');
   });
 
 

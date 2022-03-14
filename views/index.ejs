@@ -1,42 +1,14 @@
-<!doctype html>
-<html lang="nl">
+<%- include('includes/head.ejs'); %>
 
-<head>
-    <meta charset="UTF-8">
-    <meta name="author" content="Jonna Visser">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Dog at the park</title>
-    <link href="./HTML/style.css" rel="stylesheet">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Bentham&family=Oswald:wght@200&display=swap" rel="stylesheet">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Bentham&family=Oswald:wght@200&family=Quicksand:wght@700&display=swap" rel="stylesheet">
-
-</head>
 
 <body class="index">
 
-    <header>
-        <ul>
-            <li>
-                <img src="./HTML/photos-matchingapp/log-out.png" width="50" height="50" alt="log uit">
-                <a href=""></a>
-            </li>
-            <li>
-                <h1>Dogs at the park</h1>
-            </li>
-            <li>
-              <img class="profielfotoklein" src="./HTML/photos-matchingapp/lisa-en-chick.jpg" width="50" height="75" alt="lisa en chick"> 
-            </li>
-        </ul>
-    </header>
+    <%- include('includes/header.ejs'); %>
 
     <main  class="checkinmain">
         <ul>
             <li>
-                <img class="profielfotogroot" src="./HTML/photos-matchingapp/lisa-en-chick.jpg" width="200" height="300" alt="lisa en chick"> 
+                <img class="profielfotogroot" src="/images/lisa-en-chick.jpg" width="200" height="300" alt="lisa en chick"> 
             </li>
             <li>
                 <h2>HEY LISA EN CHICK!</h2>
@@ -44,15 +16,13 @@
             <li>
                 <p>Check snel in om de hondenmaatjes in je buurt te zien.</p> 
             </li>
+            <li>
+                <button class="button"><a href="./HTML/Overzicht.html">check in</a></button>
+            </li>
         </ul>
-
-
     </main>
-
-    <footer class="checkinfooter">
-        <button class="button"><a href="./HTML/Overzicht.html">check in</a></button>
-    </footer>
+    
+    <%- include('includes/footer.ejs'); %>
     
 </body>
 
-</html>
