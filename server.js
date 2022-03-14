@@ -11,43 +11,43 @@ const port = 3000;
 const hondenmaatjes = [
   {
     id: 1,
-    slug: 'thirza-bommel',
-    name: 'Thirza Bommel',
-    years: ['23', '3'],
-    info: 'single postieve meid die van praten houdt',
-    zoekt: 'hondenmaatje die af en toe lekker over koetjes en kalfjes wil praten',
+    slug: 'maria-asha',
+    name: 'Maria Asha',
+    years: ['35', '1'],
+    afstand: '1 km ',
+    steekwoorden: 'sportief, wandelen, kilometers, kletsen',
   },
   {
     id: 2,
     slug: 'roel-thunder',
     name: 'Roel Thunder',
     years: ['27', '2'],
-    info: 'Ik ben een hondenmaatje met veel energie net als mijn geweldige hond, dit moeten wij af en toe kwijt',
-    zoekt: 'hondenmaatje waar we mee kunnen ravotten',
+    afstand: '0.5 km',
+    steekwoorden: 'adhd, energie, ravotten',
   },
   {
     id: 3,
-    slug: 'maria-asha',
-    name: 'Maria Asha',
-    years: ['45', '10'],
-    info: 'huisvrouw met twee kinderen die naar school gaan',
-    zoekt: 'ouder hondenmaatje om tusssen de middag mee te kletsen',
+    slug: 'thirza-bommel',
+    name: 'Thirza Bommel',
+    years: ['50', '3'],
+    afstand: '5 km',
+    steekwoorden: 'huisvrouw, kinderen, ouders, kletsen',
   },
   {
     id: 4,
     slug: 'joke-kaya',
     name: 'Joke kaya',
-    years: ['50', '4'],
-    info: 'ik ben sportief en hou van wandelen',
-    zoekt: 'hondenmaatje om een flink eind mee te wandelen en kletsen',
+    years: ['23', '5'],
+    afstand: '1 km',
+    steekwoorden: 'single, positief, nonsense, praten',
   },
   {
     id: 5,
-    slug: 'lisa-chick',
-    name: 'Lisa Chick',
-    years: ['30', '8'],
-    info: 'Ik ben een echt meisje-meisje, en mijn kleine chick ook',
-    zoekt: 'hondenmaatje met klein schattig hondje die de perfecte match is voor chick en mij',
+    slug: 'rayza-boef',
+    name: 'Rayza Boef',
+    years: ['33', '7'],
+    afstand: '2 km ',
+    steekwoorden: 'single, geniet, dromerig, chill',
   },
 ];
 
@@ -71,8 +71,12 @@ res.render('index');
 });
 
 app.get('/overzicht', (req, res) => {
-  res.render('overzicht');
+  res.render('overzicht', {hondenmaatjes:hondenmaatjes});
   });
+
+app.get ('/blokjesoverzicht', (req, res) => {
+  res.render('includes/blokjesoverzicht',{hondenmaatjes:hondenmaatjes});
+});
 
 app.get('/detailpagina-maria-asha', (req, res) => {
   res.render('detailpagina-maria-asha');

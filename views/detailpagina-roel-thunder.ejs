@@ -2,28 +2,12 @@
 
 <body class="achtergrondkleur">
 
-    <header>
-        <ul>
-            <li>
-                <a href="./Overzicht.html">
-                <svg xmlns="http://www.w3.org/2000/svg" width="34.875" height="34.875" viewbox="0 0 34.875 34.875">
-                    <path id="Icon_awesome-arrow-alt-circle-left" data-name="Icon awesome-arrow-alt-circle-left" d="M18,35.438A17.438,17.438,0,1,1,35.438,18,17.434,17.434,0,0,1,18,35.438Zm8.156-20.531H18V9.921a.844.844,0,0,0-1.441-.6L8.522,17.4a.836.836,0,0,0,0,1.188l8.037,8.079a.844.844,0,0,0,1.441-.6V21.094h8.156A.846.846,0,0,0,27,20.25v-4.5A.846.846,0,0,0,26.156,14.906Z" transform="translate(-0.563 -0.563)"/>
-                  </svg>
-                </a>
-                  
-            </li>
-            <li>
-                <h1>Dogs at the park</h1>
-            </li>
-            <li>
-              <img class="profielfotoklein" src="../HTML/photos-matchingapp/lisa-en-chick.jpg" width="100" height="100" alt="lisa en chick"> 
-            </li>
-        </ul>
-    </header>
+    <%- include('includes/header3.ejs'); %>
 
     <main>
         <div class="headerdetail">
-            <img class="profielfotogroot"  src="../HTML/photos-matchingapp/roel-thunder.jpg" width="400" height="300" alt="roel en thunder"> 
+            <img class="profielfotogroot" src="/images/roel-thunder.jpg" width="400" height="300"
+                alt="roel en thunder">
             <h2>roel en thunder</h2>
             <h3>27 en 2</h3>
         </div>
@@ -32,15 +16,15 @@
             <p>Yoehoe! <strong>Wij zijn</strong> een een bal energie die soms moet ontploffen.</p>
             <p><strong>Wij zoeken</strong> naar dezelfde bal energie om mee te ravotten.</p>
         </div>
-
+        <div class="dubbelbutton">
+            <button><a href="overzicht">terug naar Overzicht</a></button>
+            <button><a href="#">spreek af</a></button>
+        </div>
 
     </main>
 
-    <footer class="dubbelbutton">
-        <button><a href="./Overzicht.html">terug naar Overzicht</a></button>
-        <button><a href="../index.html">spreek af</a></button>
-    </footer>
-    
+
+    <%- include('includes/footer.ejs'); %>
 </body>
 
 </html>
