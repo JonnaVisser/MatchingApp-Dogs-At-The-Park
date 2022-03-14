@@ -1,17 +1,52 @@
-<%- include('includes/head.ejs'); %>
+<!doctype html>
+<html lang="nl">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="author" content="Jonna Visser">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Dog at the park</title>
+    <link href="./style.css" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bentham&family=Oswald:wght@200&display=swap" rel="stylesheet">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bentham&family=Oswald:wght@200&family=Quicksand:wght@700&display=swap" rel="stylesheet">
+</head>
 
 <body class="achtergrondkleur">
 
-    <%- include('includes/header2.ejs'); %>
+    <header>
+        <ul>
+            <li>
+                <a href="../index.html">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="34.875" height="34.875" viewbox="0 0 34.875 34.875">
+                        <path id="Icon_awesome-arrow-alt-circle-left" data-name="Icon awesome-arrow-alt-circle-left"
+                            d="M18,35.438A17.438,17.438,0,1,1,35.438,18,17.434,17.434,0,0,1,18,35.438Zm8.156-20.531H18V9.921a.844.844,0,0,0-1.441-.6L8.522,17.4a.836.836,0,0,0,0,1.188l8.037,8.079a.844.844,0,0,0,1.441-.6V21.094h8.156A.846.846,0,0,0,27,20.25v-4.5A.846.846,0,0,0,26.156,14.906Z"
+                            transform="translate(-0.563 -0.563)" />
+                    </svg>
+                </a>
+
+            </li>
+            <li>
+                <h1>Dogs at the park</h1>
+            </li>
+            <li>
+                <img class="profielfotoklein" src="../HTML/photos-matchingapp/lisa-en-chick.jpg" width="50" height="75"
+                    alt="lisa en chick">
+            </li>
+        </ul>
+    </header>
 
     <main class="overzicht">
         <div class="overzichtblok">
-            <a class="linkoverzicht" href="detailpagina-maria-asha">
+            <a class="linkoverzicht" href="./detailpagina-maria-asha.html">
 
             <div class="infoblok">
                 <ul>
                     <li>
-                        <img class="profielfotomiddel" src="/images/maria-asha.jpg" width="200" height="300"
+                        <img class="profielfotomiddel" src="../HTML/photos-matchingapp/maria-asha.jpg" width="200" height="300"
                         alt="maria en asha">
 
                         <h2>maria en asha                        <svg xmlns="http://www.w3.org/2000/svg" width="32.001" height="30.401" viewbox="0 0 32.001 30.401">
@@ -39,12 +74,12 @@
         </div>
 
         <div class="overzichtblok">
-            <a class="linkoverzicht" href="detailpagina-roel-thunder">
+            <a class="linkoverzicht" href="./detailpagina-roel-thunder.html">
             
             <div class="infoblok">
                 <ul>
                     <li>
-                        <img class="profielfotomiddel" src="/images/roel-thunder.jpg" width="300" height="200"
+                        <img class="profielfotomiddel" src="../HTML//photos-matchingapp/roel-thunder.jpg" width="300" height="200"
                         alt="roel en thunder">
                         <h2>roel en thunder</h2>
                         <h3>27 en 2</h3>
@@ -65,11 +100,11 @@
         </div>
 
         <div class="overzichtblok">
-            <a class="linkoverzicht" href="detailpagina-thirza-bommel">
+            <a class="linkoverzicht" href="./detailpagina-thirza-bommel.html">
             <div class="infoblok">
                 <ul>
                     <li>
-                        <img class="profielfotomiddel" src="/images/thirza-bommel.jpg" width="300" height="200"
+                        <img class="profielfotomiddel" src="../HTML/photos-matchingapp/thirza-bommel.jpg" width="300" height="200"
                         alt="thirza en bommel">
                         <h2>thirza en bommel</h2>
                         <h3>50 en 3</h3>
@@ -95,7 +130,7 @@
             <div class="infoblok">
                 <ul>
                     <li>
-                        <img class="profielfotomiddel" src="/images/joke-kaya.jpg" width="200" height="300"
+                        <img class="profielfotomiddel" src="../HTML/photos-matchingapp/joke-kaya.jpg" width="200" height="300"
                         alt="joke en kaya">
                         <h2>joke en kaya</h2>
                         <h3>23 en 5</h3>
@@ -120,7 +155,7 @@
             <div class="infoblok">
                 <ul>
                     <li>
-                        <img class="profielfotomiddel" src="/images/rayza-boef.jpg" width="300" height="200"
+                        <img class="profielfotomiddel" src="../HTML/photos-matchingapp/rayza-boef.jpg" width="300" height="200"
                         alt="rayza en boef">
                         <h2>rayza en boef</h2>
                         <h3>33 en 7</h3>
@@ -139,10 +174,11 @@
             </div>
             </a>
         </div>
-        <button><a href="index.ejs">check uit</a></button>
     </main>
 
-    <%- include('includes/footer.ejs'); %>
+    <footer>
+        <button><a href="../index.html">check uit</a></button>
+    </footer>
 
 </body>
 

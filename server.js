@@ -54,6 +54,7 @@ const hondenmaatjes = [
 /***************************************
  * Middleware***************************/
 app.use(express.static('public'))
+app.use('/html', express.static(__dirname + 'public/html'));
 app.use('/css', express.static(__dirname + 'public/css'));
 app.use('/js', express.static(__dirname + 'public/js'));
 app.use('/images', express.static(__dirname + 'public/images'));
@@ -66,11 +67,31 @@ app.set('views', './views');
 
 
 app.get('/', (req, res) => {
-res.render('index.ejs');
+res.render('index');
 });
 
 app.get('/overzicht', (req, res) => {
   res.render('overzicht');
+  });
+
+app.get('/detailpagina-maria-asha', (req, res) => {
+  res.render('detailpagina-maria-asha');
+  });
+
+app.get('/detailpagina-roel-thunder', (req, res) => {
+  res.render('detailpagina-roel-thunder');
+  });
+
+app.get('/detailpagina-thirza-bommel', (req, res) => {
+  res.render('detailpagina-thirza-bommel');
+  });
+
+app.get('/detailpagina-joke-kaya', (req, res) => {
+  res.render('detailpagina-joke-kaya');
+  });
+
+app.get('/detailpagina-rayza-boef', (req, res) => {
+  res.render('detailpagina-rayza-boef');
   });
 
 
