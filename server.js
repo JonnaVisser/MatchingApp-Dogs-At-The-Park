@@ -14,7 +14,7 @@ const hondenmaatjes = [
     slug: 'maria-asha',
     name: 'Maria Asha',
     years: ['35', '1'],
-    afstand: '1 km ',
+    park: 'Vondelpark',
     steekwoorden: 'sportief, wandelen, kilometers, kletsen',
   },
   {
@@ -22,7 +22,7 @@ const hondenmaatjes = [
     slug: 'roel-thunder',
     name: 'Roel Thunder',
     years: ['27', '2'],
-    afstand: '0.5 km',
+    park: 'Oosterpark',
     steekwoorden: 'adhd, energie, ravotten',
   },
   {
@@ -30,7 +30,7 @@ const hondenmaatjes = [
     slug: 'thirza-bommel',
     name: 'Thirza Bommel',
     years: ['50', '3'],
-    afstand: '5 km',
+    park: 'Vondelpark',
     steekwoorden: 'huisvrouw, kinderen, ouders, kletsen',
   },
   {
@@ -38,7 +38,7 @@ const hondenmaatjes = [
     slug: 'joke-kaya',
     name: 'Joke kaya',
     years: ['23', '5'],
-    afstand: '1 km',
+    park: 'Westerpark',
     steekwoorden: 'single, positief, nonsense, praten',
   },
   {
@@ -46,7 +46,7 @@ const hondenmaatjes = [
     slug: 'rayza-boef',
     name: 'Rayza Boef',
     years: ['33', '7'],
-    afstand: '2 km ',
+    park: 'Westerpark',
     steekwoorden: 'single, geniet, dromerig, chill',
   },
 ];
