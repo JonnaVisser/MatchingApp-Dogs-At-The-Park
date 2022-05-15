@@ -1,0 +1,46 @@
+<%- include('includes/head.ejs'); %>
+
+
+<body class="index">
+
+    <%- include('includes/header1.ejs'); %>
+
+    <main class="checkinmain">
+        <ul>
+            <li>
+                <img class="profielfotogroot" src="/images/lisa-en-chick.jpg" width="200" height="300"
+                    alt="lisa en chick">
+            </li>
+            <li>
+                <h2>Lisa</h2>
+            </li>
+            <li>
+                <p>Hond(en)</p>
+            </li>
+            <% for(var i=0; i<honden.length; i++) {%>
+            <li>
+                <form action="/formulier" method="post">
+                    <input type="hidden" name="id" value="<%= honden[i].id%>" />
+                    <input type="text" name="naam" value="<%= honden[i].naam%>" />
+                    <input type="text" name="leeftijd" value="<%= honden[i].leeftijd%>" />
+                    <button name="flow" value="bijwerken">Bijwerken</button>
+                    <button name="flow" value="verwijderen">Verwijderen</button>
+                </form>
+            </li>
+            <%}%>
+            <li>
+                <p>Toevoegen</p>
+            </li>
+            <li>
+                <form action="/formulier" method="post" name="toevoegen">
+                    <input type="text" name="naam" id="naam" />
+                    <input type="text" name="leeftijd" id="leeftijd" />
+                    <button name="flow" id="add" value="toevoegen">Toevoegen</button>
+                </form>
+            </li>
+        </ul>
+    </main>
+
+    <%- include('includes/footer.ejs'); %>
+
+</body>

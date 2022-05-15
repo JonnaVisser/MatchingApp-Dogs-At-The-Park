@@ -54,6 +54,8 @@ const hondenmaatjes = [
 /***************************************
  * Middleware***************************/
 app.use(express.static('public'))
+app.use(express.json())
+app.use(express.urlencoded({ extended: true }));
 app.use('/html', express.static(__dirname + 'public/html'));
 app.use('/css', express.static(__dirname + 'public/css'));
 app.use('/js', express.static(__dirname + 'public/js'));
@@ -71,8 +73,14 @@ res.render('index');
 });
 
 app.get('/overzicht', (req, res) => {
-  res.render('overzicht', {hondenmaatjes:hondenmaatjes});
-  });
+
+  if(req.query && req.query.park){
+    res.render('overzicht', {hondenmaatjes:hondenmaatjes.filter(hondenmaatje => hondenmaatje.park.toLowerCase()== req.query.park.toLowerCase())});
+  }
+  else {
+    res.render('overzicht', {hondenmaatjes:hondenmaatjes});
+  }
+});
 
 app.get ('/blokjesoverzicht', (req, res) => {
   res.render('includes/blokjesoverzicht',{hondenmaatjes:hondenmaatjes});
@@ -96,6 +104,36 @@ app.get('/detailpagina-joke-kaya', (req, res) => {
 
 app.get('/detailpagina-rayza-boef', (req, res) => {
   res.render('detailpagina-rayza-boef');
+  });
+
+app.get('/formulier', (req, res) => {
+  //TODO: Get data from database to pass along to our template
+  res.render('formulier', {honden:[{id: 1, naam:'chick', leeftijd:1}]}); //<<this data should come from the database!!
+  });
+
+app.post('/formulier', (req, res) => {
+  //example how to get data from your post request
+  const name = req.body.naam;
+  console.log(name);
+  console.log(req.body);
+
+  //TODO: you 'logic' goes here, preferably in separate functions.
+  //HINT: you can use the "flow" from your POST-body to determine the action (create/update/delete), e.g.: req.body.flow == 'toevoegen' => means it's an "add to database"-action
+  if(req.body.flow == "verwijderen")
+  {
+    //delete dog, unwoof the woof :)
+  }
+  else if(req.body.flow == "toevoegen")
+  {
+    //add new dog to databsae, moooooor woofs :)
+  }
+  else if(req.body.flow == "bijwerken")
+  {
+    //update existing dog, woof-improvement :)
+  }
+
+  //redirect back to formulier with get to update on-screen info
+  res.redirect('/formulier');
   });
 
 
