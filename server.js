@@ -2,12 +2,12 @@
  * Getting Started
  ************************************ */
 const express = require('express');
-
+require('dotenv').config()
 /** **********************************
  * Constants and Variables
  ************************************ */
 const app = express();
-const port = 3000;
+
 const hondenmaatjes = [
   {
     id: 1,
@@ -147,8 +147,8 @@ app.use( (req, res) =>{
 /** *********************************
  * Start Webserver
  *********************************** */
-app.listen(port, () => {
-  console.log(`web server  running on http://localhost:${port}`);
+app.listen(process.env.PORT, () => {
+  console.log(`web server  running on http://localhost:${process.env.PORT}`);
 });
 
 
