@@ -75,10 +75,10 @@ res.render('index');
 app.get('/overzicht', (req, res) => {
 
   if(req.query && req.query.park){
-    res.render('overzicht', {hondenmaatjes:hondenmaatjes.filter(hondenmaatje => hondenmaatje.park.toLowerCase()== req.query.park.toLowerCase())});
+    res.render('overzicht2', {hondenmaatjes:hondenmaatjes.filter(hondenmaatje => hondenmaatje.park.toLowerCase()== req.query.park.toLowerCase())});
   }
   else {
-    res.render('overzicht', {hondenmaatjes:hondenmaatjes});
+    res.render('overzicht2', {hondenmaatjes:hondenmaatjes});
   }
 });
 
