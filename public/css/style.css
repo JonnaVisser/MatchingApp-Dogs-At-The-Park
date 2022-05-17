@@ -307,3 +307,51 @@ header > ul li:nth-of-type(3) {
  .dropdown:hover .dropbtn {
    background-color: #bca8a6;
  }
+
+ /*formulier*/
+ form input{
+    max-width: 100%;
+    padding: 10px;
+    padding-right: 75%;
+    box-sizing: border-box;
+    font-family: 'Bentham', serif;
+    font-size:23px;
+ }
+
+ /* form {
+    display: flex;
+    flex-direction: row;
+ } */
+
+ .formulier li {
+   /* display: flex;
+   justify-content: center; */
+ }
+
+ .formulier p {
+    font-size: 50px;
+ }
+ 
+
+ .formulier button {
+    padding-top: 20px;
+    padding-right: 40px;
+    padding-bottom: 20px;
+    padding-left: 40px;
+    margin-top: 20px;
+    /* margin-right: 40px;
+    margin-left: 40px; */
+    font-size: 20px;
+    /* display: flex;
+    flex-direction:row; */
+    color:#D8CFCD;   
+
+
+ }
+
+
+ label {
+   font-family: 'Bentham', serif;
+   font-size:23px;
+ }
+

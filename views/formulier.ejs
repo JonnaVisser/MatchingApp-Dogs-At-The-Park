@@ -3,9 +3,9 @@
 
 <body class="index">
 
-    <%- include('includes/header1.ejs'); %>
+    <%- include('includes/header2.ejs'); %>
 
-    <main class="checkinmain">
+    <main class="formulier">
         <ul>
             <li>
                 <img class="profielfotogroot" src="/images/lisa-en-chick.jpg" width="200" height="300"
@@ -21,8 +21,10 @@
             <li>
                 <form action="/formulier" method="post">
                     <input type="hidden" name="id" value="<%= honden[i].id%>" />
-                    <input type="text" name="naam" value="<%= honden[i].naam%>" />
-                    <input type="text" name="leeftijd" value="<%= honden[i].leeftijd%>" />
+                    <label>Naam</label><br>
+                    <input type="text" name="naam" value="<%= honden[i].naam%>" /><br>
+                    <label>Leeftijd</label><br>
+                    <input type="text" name="leeftijd" value="<%= honden[i].leeftijd%>" /><br>
                     <button name="flow" value="bijwerken">Bijwerken</button>
                     <button name="flow" value="verwijderen">Verwijderen</button>
                 </form>
@@ -33,8 +35,10 @@
             </li>
             <li>
                 <form action="/formulier" method="post" name="toevoegen">
-                    <input type="text" name="naam" id="naam" />
-                    <input type="text" name="leeftijd" id="leeftijd" />
+                    <label>Naam</label><br>
+                    <input type="text" name="naam" id="naam" /><br>
+                    <label>Leeftijd</label><br>
+                    <input type="text" name="leeftijd" id="leeftijd" /><br>
                     <button name="flow" id="add" value="toevoegen">Toevoegen</button>
                 </form>
             </li>
