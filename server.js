@@ -4,6 +4,7 @@
 const express = require('express');
 require('dotenv').config()
 
+async function connectDB() {
 const { MongoClient, ServerApiVersion } = require('mongodb');
 const uri = 'mongodb+srv://' + process.env.DB_USERNAME + ':' + process.env.DB_PASS + '@' + process.env.DB_HOST + '/' + process.env.DB_NAME + '?retryWrites=true&w=majority';
 const client = new MongoClient(uri, { useNewUrlParser: true, useUnifiedTopology: true, serverApi: ServerApiVersion.v1 });
@@ -13,7 +14,7 @@ client.connect(err => {
   // // perform actions on the collection object
   // client.close();
   console.log("Connected correctly to MongoDB server");
-});
+})};
 
 /** **********************************
  * Constants and Variables
@@ -162,6 +163,8 @@ app.use( (req, res) =>{
 app.listen(process.env.PORT, () => {
   console.log(`web server  running on http://localhost:${process.env.PORT}`);
 });
+
+connectDB (). then(console.log("we have a connection"))
 
 
 
