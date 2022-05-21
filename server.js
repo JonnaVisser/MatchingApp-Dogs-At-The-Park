@@ -2,67 +2,68 @@
  * Getting Started
  ************************************ */
 const express = require('express');
-require('dotenv').config()
+const slug = require('slug');
+const arrayify = require('array-back');
+const dotenv = require('dotenv').config();
+const {MongoClient} = require('mongodb');
+const {ObjectId} = require('mongodb');
 
-async function connectDB() {
-const { MongoClient, ServerApiVersion } = require('mongodb');
-const uri = 'mongodb+srv://' + process.env.DB_USERNAME + ':' + process.env.DB_PASS + '@' + process.env.DB_HOST + '/' + process.env.DB_NAME + '?retryWrites=true&w=majority';
-const client = new MongoClient(uri, { useNewUrlParser: true, useUnifiedTopology: true, serverApi: ServerApiVersion.v1 });
-client.connect(err => {
-  if (err) { throw err}
-  // const collection = client.db("test").collection("devices");
-  // // perform actions on the collection object
-  // client.close();
-  console.log("Connected correctly to MongoDB server");
-})};
+
+
+
+
 
 /** **********************************
  * Constants and Variables
  ************************************ */
 const app = express();
 
-const hondenmaatjes = [
-  {
-    id: 1,
-    slug: 'maria-asha',
-    name: 'Maria Asha',
-    years: ['35', '1'],
-    park: 'Vondelpark',
-    steekwoorden: 'sportief, wandelen, kilometers, kletsen',
-  },
-  {
-    id: 2,
-    slug: 'roel-thunder',
-    name: 'Roel Thunder',
-    years: ['27', '2'],
-    park: 'Oosterpark',
-    steekwoorden: 'adhd, energie, ravotten',
-  },
-  {
-    id: 3,
-    slug: 'thirza-bommel',
-    name: 'Thirza Bommel',
-    years: ['50', '3'],
-    park: 'Vondelpark',
-    steekwoorden: 'huisvrouw, kinderen, ouders, kletsen',
-  },
-  {
-    id: 4,
-    slug: 'joke-kaya',
-    name: 'Joke kaya',
-    years: ['23', '5'],
-    park: 'Westerpark',
-    steekwoorden: 'single, positief, nonsense, praten',
-  },
-  {
-    id: 5,
-    slug: 'rayza-boef',
-    name: 'Rayza Boef',
-    years: ['33', '7'],
-    park: 'Westerpark',
-    steekwoorden: 'single, geniet, dromerig, chill',
-  },
-];
+let db = null;
+
+
+// const hondenmaatjes = [
+//   {
+//     id: 1,
+//     slug: 'maria-asha',
+//     name: 'Maria Asha',
+//     years: ['35', '1'],
+//     park: 'Vondelpark',
+//     steekwoorden: 'sportief, wandelen, kilometers, kletsen',
+//   },
+//   {
+//     id: 2,
+//     slug: 'roel-thunder',
+//     name: 'Roel Thunder',
+//     years: ['27', '2'],
+//     park: 'Oosterpark',
+//     steekwoorden: 'adhd, energie, ravotten
+//   },
+//   {
+//     id: 3,
+//     slug: 'thirza-bommel',
+//     name: 'Thirza Bommel',
+//     years: ['50', '3'],
+//     park: 'Vondelpark',
+//     steekwoorden: 'huisvrouw, kinderen, ouders, kletsen',
+//   },
+//   {
+//     id: 4,
+//     slug: 'joke-kaya',
+//     name: 'Joke kaya',
+//     years: ['23', '5'],
+//     park: 'Westerpark',
+//     steekwoorden: 'single, positief, nonsense, praten',
+//   },
+//   {
+//     id: 5,
+//     slug: 'rayza-boef',
+//     name: 'Rayza Boef',
+//     years: ['33', '7'],
+//     park: 'Westerpark',
+//     steekwoorden: 'single, geniet, dromerig, chill',
+//   },
+// ];
+
 
 /***************************************
  * Middleware***************************/
@@ -85,19 +86,21 @@ app.get('/', (req, res) => {
 res.render('index');
 });
 
-app.get('/overzicht', (req, res) => {
+app.get('/overzicht', async (req, res) => {
+  const query = "park";
+  const hondenmaatjes = await db.collection("hondenmaatjes").find(query,{}).toArray();
 
-  if(req.query && req.query.park){
-    res.render('overzicht2', {hondenmaatjes:hondenmaatjes.filter(hondenmaatje => hondenmaatje.park.toLowerCase()== req.query.park.toLowerCase())});
-  }
-  else {
+  // if(req.query && req.query.park){
+  //   res.render('overzicht2', {hondenmaatjes:hondenmaatjes.filter(hondenmaatje => hondenmaatje.park.toLowerCase()== req.query.park.toLowerCase())});
+  // }
+  // else {
     res.render('overzicht2', {hondenmaatjes:hondenmaatjes});
-  }
+  // }
 });
 
-app.get ('/blokjesoverzicht', (req, res) => {
-  res.render('includes/blokjesoverzicht',{hondenmaatjes:hondenmaatjes});
-});
+// app.get ('/blokjesoverzicht', (req, res) => {
+//   res.render('includes/blokjesoverzicht',{hondenmaatjes:hondenmaatjes});
+// });
 
 app.get('/detailpagina-maria-asha', (req, res) => {
   res.render('detailpagina-maria-asha');
@@ -121,26 +124,36 @@ app.get('/detailpagina-rayza-boef', (req, res) => {
 
 app.get('/formulier', (req, res) => {
   //TODO: Get data from database to pass along to our template
-  res.render('formulier', {honden:[{id: 1, naam:'chick', leeftijd:1}]}); //<<this data should come from the database!!
+  // res.render('formulier', {title: honden:[{id: 1, naam:'chick', leeftijd:1}]}); //<<this data should come from the database!!
   });
 
-app.post('/formulier', (req, res) => {
+app.post('/formulier', async (req, res) => {
   //example how to get data from your post request
-  const name = req.body.naam;
-  console.log(name);
-  console.log(req.body);
+  // const name = req.body.naam;
+  // console.log(name);
+  // console.log(req.body);
 
   //TODO: you 'logic' goes here, preferably in separate functions.
   //HINT: you can use the "flow" from your POST-body to determine the action (create/update/delete), e.g.: req.body.flow == 'toevoegen' => means it's an "add to database"-action
-  if(req.body.flow == "verwijderen")
+  // if(req.body.flow == "verwijderen")
   {
     //delete dog, unwoof the woof :)
   }
-  else if(req.body.flow == "toevoegen")
+  // else if(req.body.flow == "toevoegen")
   {
+    
+    const toevoegen = {
+      naam: req.body.naam,
+      leeftijd: req.body.leeftijd
+    };
+   await db.collection('honden').insertOne(toevoegen); 
+   const query = {};
+   const honden = await db.collection('honden').find(query,{}).toArray();
+
+   
     //add new dog to databsae, moooooor woofs :)
   }
-  else if(req.body.flow == "bijwerken")
+  // else if(req.body.flow == "bijwerken")
   {
     //update existing dog, woof-improvement :)
   }
@@ -153,18 +166,49 @@ app.post('/formulier', (req, res) => {
 
 /*****************************************
  * 404****************************** */
-app.use( (req, res) =>{
-  res.status(404).send('Error 404: file not found')
-})  
+app.use(function (req, res) {
+  res.status(404).render('404', {title:"Error 404: file not found"});
+});
+
+/*****************************************************
+ * Connect to database
+ ****************************************************/
+ async function connectDB () {
+  const uri = process.env.DB_URI;
+  const client = new MongoClient(uri, {
+    useNewUrlParser: true,
+    useUnifiedTopology: true,
+  });
+  try {
+      await client.connect();
+      db = client.db (process.env.DB_NAME);
+  } catch (error) {
+      throw error;
+  } 
+  
+}
+// async function connectDB() {
+// const { MongoClient, ServerApiVersion } = require('mongodb');
+// const uri = 'mongodb+srv://' + process.env.DB_USERNAME + ':' + process.env.DB_PASS + '@' + process.env.DB_HOST + '/' + process.env.DB_NAME + '?retryWrites=true&w=majority';
+// const client = new MongoClient(uri, { useNewUrlParser: true, useUnifiedTopology: true, serverApi: ServerApiVersion.v1 });
+// client.connect(err => {
+//   if (err) { throw err}
+//   // const collection = client.db("test").collection("devices");
+//   // // perform actions on the collection object
+//   // client.close();
+//   console.log("Connected correctly to MongoDB server");
+// })};
 
 /** *********************************
  * Start Webserver
  *********************************** */
 app.listen(process.env.PORT, () => {
   console.log(`web server  running on http://localhost:${process.env.PORT}`);
+  console.log(process.env.TESTVAR)
+  connectDB (). then(console.log("we have a connection"))
 });
 
-connectDB (). then(console.log("we have a connection"))
+
 
 
 
