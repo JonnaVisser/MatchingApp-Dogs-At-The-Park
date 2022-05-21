@@ -87,7 +87,11 @@ res.render('index');
 });
 
 app.get('/overzicht', async (req, res) => {
-  const query = "park";
+  const queryVondelpark = ( { park: { $AND: "Vondelpark" } } );
+  const queryOosterpark = ( { park: { $AND: "Oosterpark" } } );
+  const queryWesterpark = ( { park: { $AND: "Westerpark" } } );
+  const query = {queryVondelpark, queryOosterpark, queryWesterpark};
+  // const query = {park: "{req.url.park}"};
   const hondenmaatjes = await db.collection("hondenmaatjes").find(query,{}).toArray();
 
   // if(req.query && req.query.park){
@@ -98,9 +102,9 @@ app.get('/overzicht', async (req, res) => {
   // }
 });
 
-// app.get ('/blokjesoverzicht', (req, res) => {
-//   res.render('includes/blokjesoverzicht',{hondenmaatjes:hondenmaatjes});
-// });
+app.get ('/blokjesoverzicht', (req, res) => {
+  res.render('includes/blokjesoverzicht',{hondenmaatjes:hondenmaatjes});
+});
 
 app.get('/detailpagina-maria-asha', (req, res) => {
   res.render('detailpagina-maria-asha');
@@ -123,8 +127,9 @@ app.get('/detailpagina-rayza-boef', (req, res) => {
   });
 
 app.get('/formulier', (req, res) => {
+  
   //TODO: Get data from database to pass along to our template
-  // res.render('formulier', {title: honden:[{id: 1, naam:'chick', leeftijd:1}]}); //<<this data should come from the database!!
+  // res.render('formulier', {title: honden[{id: 1, naam:'chick', leeftijd:1}]}); //<<this data should come from the database!!
   });
 
 app.post('/formulier', async (req, res) => {
@@ -140,15 +145,11 @@ app.post('/formulier', async (req, res) => {
     //delete dog, unwoof the woof :)
   }
   // else if(req.body.flow == "toevoegen")
-  {
-    
-    const toevoegen = {
-      naam: req.body.naam,
-      leeftijd: req.body.leeftijd
-    };
-   await db.collection('honden').insertOne(toevoegen); 
-   const query = {};
-   const honden = await db.collection('honden').find(query,{}).toArray();
+  { let toevoegen = {
+    naam: req.body.naam,
+    leeftijd: req.body.leeftijd
+  };
+    const honden = await db.collection("honden").insertOne(toevoegen);  
 
    
     //add new dog to databsae, moooooor woofs :)
