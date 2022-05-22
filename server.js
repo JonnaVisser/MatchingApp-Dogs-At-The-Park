@@ -87,19 +87,19 @@ res.render('index');
 });
 
 app.get('/overzicht', async (req, res) => {
-  const queryVondelpark = ( { park: { $AND: "Vondelpark" } } );
-  const queryOosterpark = ( { park: { $AND: "Oosterpark" } } );
-  const queryWesterpark = ( { park: { $AND: "Westerpark" } } );
-  const query = {queryVondelpark, queryOosterpark, queryWesterpark};
-  // const query = {park: "{req.url.park}"};
-  const hondenmaatjes = await db.collection("hondenmaatjes").find(query,{}).toArray();
+  if(req.query && req.query.park) {
+  const query = {park:req.query.park};
 
-  // if(req.query && req.query.park){
-  //   res.render('overzicht2', {hondenmaatjes:hondenmaatjes.filter(hondenmaatje => hondenmaatje.park.toLowerCase()== req.query.park.toLowerCase())});
-  // }
-  // else {
+
+
+  const hondenmaatjes = await db.collection("hondenmaatjes").find(query).toArray();
+  res.render('overzicht2', {hondenmaatjes:hondenmaatjes});
+}
+  else {
+    const hondenmaatjes = await db.collection("hondenmaatjes").find({},{}).toArray();
     res.render('overzicht2', {hondenmaatjes:hondenmaatjes});
-  // }
+  }
+
 });
 
 app.get ('/blokjesoverzicht', (req, res) => {
@@ -126,45 +126,44 @@ app.get('/detailpagina-rayza-boef', (req, res) => {
   res.render('detailpagina-rayza-boef');
   });
 
-app.get('/formulier', (req, res) => {
-  
-  //TODO: Get data from database to pass along to our template
-  // res.render('formulier', {title: honden[{id: 1, naam:'chick', leeftijd:1}]}); //<<this data should come from the database!!
+app.get('/formulier', async (req, res) => {
+  const query = {};
+  const honden = await db.collection("honden").find(query).toArray();
+  res.render('formulier', {honden:honden});
   });
 
 app.post('/formulier', async (req, res) => {
-  //example how to get data from your post request
-  // const name = req.body.naam;
-  // console.log(name);
-  // console.log(req.body);
-
-  //TODO: you 'logic' goes here, preferably in separate functions.
-  //HINT: you can use the "flow" from your POST-body to determine the action (create/update/delete), e.g.: req.body.flow == 'toevoegen' => means it's an "add to database"-action
-  // if(req.body.flow == "verwijderen")
+  const filter =  {_id:new ObjectId(req.body.id)};
+  if(req.body.flow == "verwijderen")
   {
     //delete dog, unwoof the woof :)
+    await db.collection("honden").deleteOne(filter);
   }
-  // else if(req.body.flow == "toevoegen")
-  { let toevoegen = {
-    naam: req.body.naam,
-    leeftijd: req.body.leeftijd
-  };
-    const honden = await db.collection("honden").insertOne(toevoegen);  
-
-   
+  else if(req.body.flow == "toevoegen")
+  {
+    let toevoegen = {
+      naam: req.body.naam,
+      leeftijd: req.body.leeftijd
+    };
+    await db.collection("honden").insertOne(toevoegen);
     //add new dog to databsae, moooooor woofs :)
   }
-  // else if(req.body.flow == "bijwerken")
+  else if(req.body.flow == "bijwerken")
   {
+    
+    const updateDoc = {
+      $set: {
+        naam: req.body.naam,
+        leeftijd: req.body.leeftijd
+      }
+    };
+    await db.collection("honden").updateOne(filter, updateDoc, { upsert: false });
+    
     //update existing dog, woof-improvement :)
   }
-
   //redirect back to formulier with get to update on-screen info
   res.redirect('/formulier');
   });
-
-
-
 /*****************************************
  * 404****************************** */
 app.use(function (req, res) {

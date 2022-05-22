@@ -20,7 +20,7 @@
             <% for(var i=0; i<honden.length; i++) {%>
             <li>
                 <form action="/formulier" method="post">
-                    <input type="hidden" name="id" value="<%= honden[i].id%>" />
+                    <input type="hidden" name="id" value="<%= honden[i]._id%>" />
                     <label>Naam</label><br>
                     <input type="text" name="naam" value="<%= honden[i].naam%>" /><br>
                     <label>Leeftijd</label><br>
