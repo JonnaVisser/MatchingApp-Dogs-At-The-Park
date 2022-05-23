@@ -7,64 +7,11 @@ const arrayify = require('array-back');
 const dotenv = require('dotenv').config();
 const {MongoClient} = require('mongodb');
 const {ObjectId} = require('mongodb');
-
-
-
-
-
-
 /** **********************************
  * Constants and Variables
  ************************************ */
 const app = express();
-
 let db = null;
-
-
-// const hondenmaatjes = [
-//   {
-//     id: 1,
-//     slug: 'maria-asha',
-//     name: 'Maria Asha',
-//     years: ['35', '1'],
-//     park: 'Vondelpark',
-//     steekwoorden: 'sportief, wandelen, kilometers, kletsen',
-//   },
-//   {
-//     id: 2,
-//     slug: 'roel-thunder',
-//     name: 'Roel Thunder',
-//     years: ['27', '2'],
-//     park: 'Oosterpark',
-//     steekwoorden: 'adhd, energie, ravotten
-//   },
-//   {
-//     id: 3,
-//     slug: 'thirza-bommel',
-//     name: 'Thirza Bommel',
-//     years: ['50', '3'],
-//     park: 'Vondelpark',
-//     steekwoorden: 'huisvrouw, kinderen, ouders, kletsen',
-//   },
-//   {
-//     id: 4,
-//     slug: 'joke-kaya',
-//     name: 'Joke kaya',
-//     years: ['23', '5'],
-//     park: 'Westerpark',
-//     steekwoorden: 'single, positief, nonsense, praten',
-//   },
-//   {
-//     id: 5,
-//     slug: 'rayza-boef',
-//     name: 'Rayza Boef',
-//     years: ['33', '7'],
-//     park: 'Westerpark',
-//     steekwoorden: 'single, geniet, dromerig, chill',
-//   },
-// ];
-
-
 /***************************************
  * Middleware***************************/
 app.use(express.static('public'))
@@ -141,16 +88,16 @@ app.post('/formulier', async (req, res) => {
   }
   else if(req.body.flow == "toevoegen")
   {
+    //add new dog to databsae, moooooor woofs :)
     let toevoegen = {
       naam: req.body.naam,
       leeftijd: req.body.leeftijd
     };
     await db.collection("honden").insertOne(toevoegen);
-    //add new dog to databsae, moooooor woofs :)
   }
   else if(req.body.flow == "bijwerken")
   {
-    
+    //update existing dog, woof-improvement :)
     const updateDoc = {
       $set: {
         naam: req.body.naam,
@@ -158,8 +105,6 @@ app.post('/formulier', async (req, res) => {
       }
     };
     await db.collection("honden").updateOne(filter, updateDoc, { upsert: false });
-    
-    //update existing dog, woof-improvement :)
   }
   //redirect back to formulier with get to update on-screen info
   res.redirect('/formulier');
@@ -187,18 +132,6 @@ app.use(function (req, res) {
   } 
   
 }
-// async function connectDB() {
-// const { MongoClient, ServerApiVersion } = require('mongodb');
-// const uri = 'mongodb+srv://' + process.env.DB_USERNAME + ':' + process.env.DB_PASS + '@' + process.env.DB_HOST + '/' + process.env.DB_NAME + '?retryWrites=true&w=majority';
-// const client = new MongoClient(uri, { useNewUrlParser: true, useUnifiedTopology: true, serverApi: ServerApiVersion.v1 });
-// client.connect(err => {
-//   if (err) { throw err}
-//   // const collection = client.db("test").collection("devices");
-//   // // perform actions on the collection object
-//   // client.close();
-//   console.log("Connected correctly to MongoDB server");
-// })};
-
 /** *********************************
  * Start Webserver
  *********************************** */
@@ -207,41 +140,3 @@ app.listen(process.env.PORT, () => {
   console.log(process.env.TESTVAR)
   connectDB (). then(console.log("we have a connection"))
 });
-
-
-
-
-
-
-
-  // let doc = '<!doctype html>';
-  // doc += '<title>Hondenmaatjes</title>';
-  // doc += '<h1>Hondenmaatjes</h1>';
-
-  // console.dir(hondenmaatjes);
-
-  // hondenmaatjes.forEach((hondenmaatje) => {
-  //   doc += '<section>';
-  //   doc += `<h2>${hondenmaatje.name}</h2>`;
-  //   doc += '<h3>years:</h3>';
-  //   doc += `<h3>${hondenmaatje.info}</h3>`;
-  //   doc += '<ul>';
-  //   hondenmaatje.years.forEach((years) => {
-  //     doc += `<li>${years}</li>`;
-  //   });
-  //   doc += '</ul>';
-  //   doc += `<a href="/hondenmaatjes/${hondenmaatje.id}/${hondenmaatje.slug}">more info</a>`;
-  //   doc += '</section>';
-  // });
-  // res.send(doc);
-
-  // app.get('/hondenmaatjes/:id/:slug', (req, res) => {
-//   const id = req.params.id
-//   const hondenmaatje = hondenmaatjes.find(element => element.id == id)
-
-// });
-
-/* variabele
-app.get('/name/:name', (req, res) => {
-    res.send(`hello ${req.params.name}`)
-  }) */

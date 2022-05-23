@@ -108,10 +108,14 @@ button>a {
 h1 {
    font-family: 'Quicksand', sans-serif;
    text-transform: uppercase;
-   width: 175px;
+
    text-align: center;
    margin-top: 0;
 
+}
+
+header h1 {
+   width: 175px;
 }
 
 h2 {
@@ -139,8 +143,8 @@ p {
 }
 
 .checkinmain li {
-   display: flex;
-   justify-content: center;
+   /* display: flex;
+   justify-content: center; */
 }
 
 footer {
@@ -158,11 +162,15 @@ header > ul li:nth-of-type(3) {
    padding-right: 10px;
    padding-top: 10px;
 }
-
+.checkinmain li:nth-of-type(3), li:nth-of-type(6) {
+   display: flex;
+   justify-content: center;
+}
 .checkinmain  p {
   max-width:55%;
    text-align: center;
    margin-right:0;
+
 }
 
 
