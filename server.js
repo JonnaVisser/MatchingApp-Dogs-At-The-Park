@@ -31,6 +31,7 @@ app.set('views', './views');
 
 app.get('/', (req, res) => {
 res.render('index');
+
 });
 
 app.get('/overzicht', async (req, res) => {
