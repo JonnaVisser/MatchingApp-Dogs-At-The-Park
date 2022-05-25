@@ -16,13 +16,10 @@
                 <h2>HEY LISA EN CHICK!</h2>
             </li>
             <li>
-                <p>Check snel in om de hondenmaatjes in je buurt te zien.</p> 
+                <h3 class="hometext">Kies snel hieronder 1 van de parken en klik op het park om te kijken welke hondenmaatjes er beschikbaar zijn.🐾 </h3> 
             </li>
             <li>
-                <h1>Paw prints on the map represent dogs (●'◡'●)</h1>
-            </li>
-            <li>
-                <div id="map" style="height:680px;"></div>
+                <div id="map" class="hidden" style="height:680px;"></div>
                 <script>
                     var map = L.map('map').setView([52.336300948670285, 4.883351168595792], 13);
                     L.tileLayer('https://api.mapbox.com/styles/v1/{id}/tiles/{z}/{x}/{y}?access_token={accessToken}', {
@@ -35,9 +32,10 @@
                     }).addTo(map);
                     navigator.geolocation.getCurrentPosition((position)=>
                     {
+                        var marker = L.marker([52.336300948670285, 4.883351168595792]).addTo(map);
                         map.setView([position.coords.latitude, position.coords.longitude], 15);
                     }, (err) => { alert("You've denied access to your location. Don't worry, that's ok! ;) just choose a location from the dropdown instead :)"); })
-                    var marker = L.marker([52.336300948670285, 4.883351168595792]).addTo(map);
+
                     /****VONDELPARK****/
                     var polygon = L.polygon([
                     [52.35636188129635, 4.854871821755217],
@@ -175,7 +173,7 @@
 
 
             <li>
-                <div class="dropdown">
+                <div id="dropdown" >
                     <button class="dropbtn">Kies jouw park</button>
                     <div class="dropdown-content">
                       <a href="overzicht?park=Vondelpark">Vondelpark</a>
@@ -185,10 +183,18 @@
                   </div>
                   
             </li>
+            <li>
+                <script>
+                    window.onload = function (event) {
+                    document.querySelector('#dropdown').classList.add('hidden');
+                    document.querySelector('#map').classList.remove('hidden');
+                    }
+                </script>
+            </li>
         </ul>
     </main>
 
     <%- include('includes/footer.ejs'); %>
-    
+
 </body>
 
