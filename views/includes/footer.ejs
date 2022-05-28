@@ -16,7 +16,7 @@
             map.setView(coords, 15);
             L.marker(coords).addTo(map);
         }, 500);// this can potentially still not re-draw the map is the page load is too slow. It'd be better to hook this into some "dom completely loaded event" or something. But most of the time, this should work just
-    }, (err) => { alert("You've denied access to your location. Don't worry, that's ok! ;) just choose a location from the dropdown instead :)"); })
+    }, (err) => { alert("You've denied access to your location. Don't worry, that's ok! ;) just choose a park to find dog buddies :)"); })
 
     /****VONDELPARK****/
     var polygon = L.polygon([
