@@ -1,24 +1,56 @@
-    var map = L.map('map').setView([52.336300948670285, 4.883351168595792], 13);
-    L.tileLayer('https://api.mapbox.com/styles/v1/{id}/tiles/{z}/{x}/{y}?access_token={accessToken}', {
-        attribution: 'Map data &copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors, Imagery © <a href="https://www.mapbox.com/">Mapbox</a>',
-        maxZoom: 18,
-        id: 'mapbox/streets-v11',
-        tileSize: 512,
-        zoomOffset: -1,
-        accessToken: 'sk.eyJ1Ijoiam9ubmEtdmlzc2VyIiwiYSI6ImNsM2hocG01bjFieHIzZXBya3ZyZGlzdHIifQ.JufH8HEp6qLJANvF9gsg-A'
-    }).addTo(map);
-    navigator.geolocation.getCurrentPosition((position)=>
-    {
-        var coords = [position.coords.latitude, position.coords.longitude];
-        setTimeout(() => {
-            map.invalidateSize(true);
-            map.setView(coords, 15);
-            L.marker(coords).addTo(map);
-        }, 500);// this can potentially still not re-draw the map is the page load is too slow. It'd be better to hook this into some "dom completely loaded event" or something. But most of the time, this should work just fine.
-    }, (err) => { alert("You've denied access to your location. Don't worry, that's ok! ;) just choose a location from the dropdown instead :)"); })
+// initial map setup
+var startingCoords = [52.336300948670285, 4.883351168595792];
+var map = L.map('map').setView(startingCoords, 13);
+L.tileLayer('https://api.mapbox.com/styles/v1/{id}/tiles/{z}/{x}/{y}?access_token={accessToken}',
+{
+    attribution: 'Map data &copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors, Imagery © <a href="https://www.mapbox.com/">Mapbox</a>',
+    maxZoom: 18,
+    id: 'mapbox/streets-v11',
+    tileSize: 512,
+    zoomOffset: -1,
+    accessToken: 'sk.eyJ1Ijoiam9ubmEtdmlzc2VyIiwiYSI6ImNsM2hocG01bjFieHIzZXBya3ZyZGlzdHIifQ.JufH8HEp6qLJANvF9gsg-A'
+}).addTo(map);
 
-    /****VONDELPARK****/
-    var polygon = L.polygon([
+function redrawMap(coords)
+{
+    console.log("redrawing map");
+    setTimeout(() => {
+        map.invalidateSize(true);
+        map.setView(coords, 15);
+        L.marker(coords).addTo(map);
+    }, 500);
+    
+}
+
+function disableMap()
+{
+    console.log("removing map");
+    setTimeout(() => {
+    
+    map.setView(startingCoords, 13);
+    document.querySelector('#dropdown').classList.remove('hidden');
+    document.querySelector('#map').classList.remove('hidden');
+    document.querySelector('#map').classList.add('hidden');
+}, 500);
+}
+
+// remove event listeners on each reload to prevent multi-trigger behavior
+document.removeEventListener("DOMContentLoaded", redrawMap)
+document.removeEventListener("DOMContentLoaded", disableMap)
+
+// get user location + ask for permission. Upon denial, remove map, show dropdown
+navigator.geolocation.getCurrentPosition((position) =>
+{
+    var coords = [position.coords.latitude, position.coords.longitude];
+    document.addEventListener("DOMContentLoaded", redrawMap(coords))
+}, (err) =>
+{
+    alert("You've denied access to your location. Don't worry, that's ok! ;) just choose a location from the dropdown instead :)");
+    document.addEventListener("DOMContentLoaded", disableMap);
+});
+
+/****VONDELPARK****/
+var polygon = L.polygon([
     [52.35636188129635, 4.854871821755217],
     [52.360101380791214, 4.8698913052360275],
     [52.35996929922463, 4.870050135716776],
@@ -69,13 +101,13 @@
     [52.35449419316263, 4.856330825598704],
     [52.354592486499925, 4.855606629173169],
     [52.35640998111026, 4.854812663037852],
-    ]).addTo(map);
-    polygon.bindPopup("Ga naar Vondelpark")
+]).addTo(map);
+polygon.bindPopup("Ga naar Vondelpark")
     .addEventListener('click', e => {
         window.location.href = `${window.location.origin}/overzicht?park=Vondelpark`
     });
-    /****OOSTERPARK****/
-    var polygon = L.polygon([
+/****OOSTERPARK****/
+var polygon = L.polygon([
     [52.36053591833311, 4.91589796022504],
     [52.36076507495321, 4.916971571177306],
     [52.360166719056494, 4.917370266506666],
@@ -98,14 +130,14 @@
     [52.35828517527117, 4.917372693341639],
     [52.35912418503151, 4.916823221698602],
     [52.3595475008343, 4.916552213106264],
-    [52.36053097827726, 4.915903355997164],                    
-    ]).addTo(map);
-    polygon.bindPopup("Ga naar Oosterpark")
+    [52.36053097827726, 4.915903355997164],
+]).addTo(map);
+polygon.bindPopup("Ga naar Oosterpark")
     .addEventListener('click', e => {
         window.location.href = `${window.location.origin}/overzicht?park=Oosterpark`
     });
-     /****WESTERPARK****/
-    var polygon = L.polygon([
+/****WESTERPARK****/
+var polygon = L.polygon([
     [52.388550265219756, 4.847348328843289],
     [52.38866601573259, 4.850071858387191],
     [52.38887899588321, 4.850504285083578],
@@ -143,8 +175,8 @@
     [52.38635423483718, 4.84774607767181],
     [52.386613725940144, 4.847398216364156],
     [52.38855480582557, 4.847348521891699],
-    ]).addTo(map);
-    polygon.bindPopup("Ga naar Westerpark")
+]).addTo(map);
+polygon.bindPopup("Ga naar Westerpark")
     .addEventListener('click', e => {
         window.location.href = `${window.location.origin}/overzicht?park=Westerpark`
     });
