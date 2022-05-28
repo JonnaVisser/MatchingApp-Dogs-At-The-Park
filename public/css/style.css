@@ -284,8 +284,8 @@ header > ul li:nth-of-type(3) {
  /* The container <div> - needed to position the dropdown content */
  /* #dropdown {
    position: relative;
-   display: inline-block; */
- /* } */
+   display: inline-block;
+  } */
  
  /* Dropdown Content (Hidden by Default) */
  .dropdown-content {
@@ -374,3 +374,8 @@ header > ul li:nth-of-type(3) {
  .hidden {
     display: none;
  }
+
+.checkinmain > ul li:nth-of-type(5) {
+   display: flex;
+   justify-content: center;
+}

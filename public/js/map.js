@@ -1,4 +1,3 @@
-<script>
     var map = L.map('map').setView([52.336300948670285, 4.883351168595792], 13);
     L.tileLayer('https://api.mapbox.com/styles/v1/{id}/tiles/{z}/{x}/{y}?access_token={accessToken}', {
         attribution: 'Map data &copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors, Imagery © <a href="https://www.mapbox.com/">Mapbox</a>',
@@ -15,7 +14,7 @@
             map.invalidateSize(true);
             map.setView(coords, 15);
             L.marker(coords).addTo(map);
-        }, 500);// this can potentially still not re-draw the map is the page load is too slow. It'd be better to hook this into some "dom completely loaded event" or something. But most of the time, this should work just
+        }, 500);// this can potentially still not re-draw the map is the page load is too slow. It'd be better to hook this into some "dom completely loaded event" or something. But most of the time, this should work just fine.
     }, (err) => { alert("You've denied access to your location. Don't worry, that's ok! ;) just choose a location from the dropdown instead :)"); })
 
     /****VONDELPARK****/
@@ -149,7 +148,3 @@
     .addEventListener('click', e => {
         window.location.href = `${window.location.origin}/overzicht?park=Westerpark`
     });
-</script>
-<footer>
-    <p>&#9426; Dogs At The Park 2022  &#128054; </p>
-</footer>
