@@ -43,8 +43,8 @@ function getUserLocationAndSetMap()
         redrawMap();
     }, (err) =>
     {
-        alert("You've denied access to your location. Don't worry, that's ok! ;) just choose a location from the dropdown instead :)");
         disableMap();
+        alert("You've denied access to your location. Don't worry, that's ok! ;) just choose a location from the dropdown instead :)");
     });
 }
 
