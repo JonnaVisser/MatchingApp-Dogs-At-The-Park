@@ -1,52 +1,53 @@
 // initial map setup
 var startingCoords = [52.336300948670285, 4.883351168595792];
+var userCoords = [52.336300948670285, 4.883351168595792];
 var map = L.map('map').setView(startingCoords, 13);
 L.tileLayer('https://api.mapbox.com/styles/v1/{id}/tiles/{z}/{x}/{y}?access_token={accessToken}',
-{
-    attribution: 'Map data &copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors, Imagery © <a href="https://www.mapbox.com/">Mapbox</a>',
-    maxZoom: 18,
-    id: 'mapbox/streets-v11',
-    tileSize: 512,
-    zoomOffset: -1,
-    accessToken: 'sk.eyJ1Ijoiam9ubmEtdmlzc2VyIiwiYSI6ImNsM2hocG01bjFieHIzZXBya3ZyZGlzdHIifQ.JufH8HEp6qLJANvF9gsg-A'
-}).addTo(map);
+    {
+        attribution: 'Map data &copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors, Imagery © <a href="https://www.mapbox.com/">Mapbox</a>',
+        maxZoom: 18,
+        id: 'mapbox/streets-v11',
+        tileSize: 512,
+        zoomOffset: -1,
+        accessToken: 'sk.eyJ1Ijoiam9ubmEtdmlzc2VyIiwiYSI6ImNsM2hocG01bjFieHIzZXBya3ZyZGlzdHIifQ.JufH8HEp6qLJANvF9gsg-A'
+    }).addTo(map);
 
-function redrawMap(coords)
+function redrawMap()
 {
     console.log("redrawing map");
-    setTimeout(() => {
+    setTimeout(() =>
+    {
         map.invalidateSize(true);
-        map.setView(coords, 15);
-        L.marker(coords).addTo(map);
+        map.setView(userCoords, 15);
+        L.marker(userCoords).addTo(map);
     }, 500);
-    
 }
 
 function disableMap()
 {
     console.log("removing map");
-    setTimeout(() => {
-    
-    map.setView(startingCoords, 13);
-    document.querySelector('#dropdown').classList.remove('hidden');
-    document.querySelector('#map').classList.remove('hidden');
-    document.querySelector('#map').classList.add('hidden');
-}, 500);
+    setTimeout(() =>
+    {
+        map.setView(startingCoords, 13);
+        document.querySelector('#dropdown').classList.remove('hidden');
+        document.querySelector('#map').classList.remove('hidden');
+        document.querySelector('#map').classList.add('hidden');
+    }, 500);
 }
 
 // remove event listeners on each reload to prevent multi-trigger behavior
-document.removeEventListener("DOMContentLoaded", redrawMap)
-document.removeEventListener("DOMContentLoaded", disableMap)
+window.removeEventListener("load", redrawMap)
+window.removeEventListener("load", disableMap)
 
 // get user location + ask for permission. Upon denial, remove map, show dropdown
 navigator.geolocation.getCurrentPosition((position) =>
 {
-    var coords = [position.coords.latitude, position.coords.longitude];
-    document.addEventListener("DOMContentLoaded", redrawMap(coords))
+    userCoords = [position.coords.latitude, position.coords.longitude];
+    window.addEventListener("load", redrawMap)
 }, (err) =>
 {
     alert("You've denied access to your location. Don't worry, that's ok! ;) just choose a location from the dropdown instead :)");
-    document.addEventListener("DOMContentLoaded", disableMap);
+    window.addEventListener("load", disableMap);
 });
 
 /****VONDELPARK****/
@@ -103,7 +104,8 @@ var polygon = L.polygon([
     [52.35640998111026, 4.854812663037852],
 ]).addTo(map);
 polygon.bindPopup("Ga naar Vondelpark")
-    .addEventListener('click', e => {
+    .addEventListener('click', e =>
+    {
         window.location.href = `${window.location.origin}/overzicht?park=Vondelpark`
     });
 /****OOSTERPARK****/
@@ -133,7 +135,8 @@ var polygon = L.polygon([
     [52.36053097827726, 4.915903355997164],
 ]).addTo(map);
 polygon.bindPopup("Ga naar Oosterpark")
-    .addEventListener('click', e => {
+    .addEventListener('click', e =>
+    {
         window.location.href = `${window.location.origin}/overzicht?park=Oosterpark`
     });
 /****WESTERPARK****/
@@ -177,6 +180,7 @@ var polygon = L.polygon([
     [52.38855480582557, 4.847348521891699],
 ]).addTo(map);
 polygon.bindPopup("Ga naar Westerpark")
-    .addEventListener('click', e => {
+    .addEventListener('click', e =>
+    {
         window.location.href = `${window.location.origin}/overzicht?park=Westerpark`
     });

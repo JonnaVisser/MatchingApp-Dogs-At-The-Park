@@ -5,44 +5,38 @@
 
     <%- include('includes/header1.ejs'); %>
 
-    <main  class="checkinmain">
+    <main class="checkinmain">
         <ul>
             <li>
                 <a href="formulier">
-                    <img class="profielfotogroot" src="/images/lisa-en-chick.jpg" width="200" height="300" alt="lisa en chick"> 
+                    <img class="profielfotogroot" src="/images/lisa-en-chick.jpg" width="200" height="300"
+                        alt="lisa en chick">
                 </a>
             </li>
             <li>
                 <h2>HEY LISA EN CHICK!</h2>
             </li>
             <li>
-                <h3 class="hometext">Kies snel hieronder 1 van de parken en klik op het park om te kijken welke hondenmaatjes er beschikbaar zijn.🐾 </h3> 
+                <h3 class="hometext">Kies snel hieronder 1 van de parken en klik op het park om te kijken welke
+                    hondenmaatjes er beschikbaar zijn.🐾 </h3>
             </li>
             <li>
                 <div id="map" class="hidden" style="height:680px;"></div>
-                
-                
+
+
             </li>
 
 
             <li>
-                <div id="dropdown" >
+                <div id="dropdown">
                     <button class="dropbtn">Kies jouw park</button>
                     <div class="dropdown-content">
-                      <a href="overzicht?park=Vondelpark">Vondelpark</a>
-                      <a href="overzicht?park=Oosterpark">Oosterpark</a>
-                      <a href="overzicht?park=Westerpark">Westerpark</a>
+                        <a href="overzicht?park=Vondelpark">Vondelpark</a>
+                        <a href="overzicht?park=Oosterpark">Oosterpark</a>
+                        <a href="overzicht?park=Westerpark">Westerpark</a>
                     </div>
-                  </div>
-                  
-            </li>
-            <li>
-                <script>
-                    window.onload = function (event) {
-                    document.querySelector('#dropdown').classList.add('hidden');
-                    document.querySelector('#map').classList.remove('hidden');
-                    }
-                </script>
+                </div>
+
             </li>
         </ul>
     </main>
@@ -50,4 +44,3 @@
     <%- include('includes/footer.ejs'); %>
 
 </body>
-
