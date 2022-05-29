@@ -34,20 +34,23 @@ function disableMap()
     }, 300);
 }
 
-// remove event listeners on each reload to prevent multi-trigger behavior
-window.removeEventListener("load", redrawMap)
-window.removeEventListener("load", disableMap)
+function getUserLocationAndSetMap()
+{
+    // get user location + ask for permission. Upon denial, remove map, show dropdown
+    navigator.geolocation.getCurrentPosition((position) =>
+    {
+        userCoords = [position.coords.latitude, position.coords.longitude];
+        redrawMap();
+    }, (err) =>
+    {
+        alert("You've denied access to your location. Don't worry, that's ok! ;) just choose a location from the dropdown instead :)");
+        disableMap();
+    });
+}
 
-// get user location + ask for permission. Upon denial, remove map, show dropdown
-navigator.geolocation.getCurrentPosition((position) =>
-{
-    userCoords = [position.coords.latitude, position.coords.longitude];
-    window.addEventListener("load", redrawMap)
-}, (err) =>
-{
-    alert("You've denied access to your location. Don't worry, that's ok! ;) just choose a location from the dropdown instead :)");
-    window.addEventListener("load", disableMap);
-});
+// remove event listeners on each reload to prevent multi-trigger behavior
+window.removeEventListener("load", getUserLocationAndSetMap)
+window.addEventListener("load", getUserLocationAndSetMap)
 
 /****VONDELPARK****/
 var polygon = L.polygon([
