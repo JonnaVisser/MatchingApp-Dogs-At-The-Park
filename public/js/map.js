@@ -1,7 +1,6 @@
 // initial map setup
-var startingCoords = [52.336300948670285, 4.883351168595792];
 var userCoords = [52.336300948670285, 4.883351168595792];
-var map = L.map('map').setView(startingCoords, 13);
+var map = L.map('map').setView(userCoords, 13);
 L.tileLayer('https://api.mapbox.com/styles/v1/{id}/tiles/{z}/{x}/{y}?access_token={accessToken}',
     {
         attribution: 'Map data &copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors, Imagery © <a href="https://www.mapbox.com/">Mapbox</a>',
@@ -20,7 +19,7 @@ function redrawMap()
         map.invalidateSize(true);
         map.setView(userCoords, 15);
         L.marker(userCoords).addTo(map);
-    }, 500);
+    }, 300);
 }
 
 function disableMap()
@@ -28,11 +27,11 @@ function disableMap()
     console.log("removing map");
     setTimeout(() =>
     {
-        map.setView(startingCoords, 13);
+        map.setView(userCoords, 13);
         document.querySelector('#dropdown').classList.remove('hidden');
         document.querySelector('#map').classList.remove('hidden');
         document.querySelector('#map').classList.add('hidden');
-    }, 500);
+    }, 300);
 }
 
 // remove event listeners on each reload to prevent multi-trigger behavior
