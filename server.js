@@ -1,19 +1,20 @@
-/** ***********************************
+/**************************************
  * Getting Started
- ************************************ */
+ **************************************/
 const express = require('express');
 const slug = require('slug');
 const arrayify = require('array-back');
 const dotenv = require('dotenv').config();
 const { MongoClient } = require('mongodb');
 const { ObjectId } = require('mongodb');
-/** **********************************
+/***************************************
  * Constants and Variables
- ************************************ */
+ **************************************/
 const app = express();
 let db = null;
 /***************************************
- * Middleware***************************/
+ * Middleware
+ ***************************************/
 app.use(express.static('public'))
 app.use(express.json())
 app.use(express.urlencoded({ extended: true }));
@@ -21,10 +22,9 @@ app.use('/html', express.static(__dirname + 'public/html'));
 app.use('/css', express.static(__dirname + 'public/css'));
 app.use('/js', express.static(__dirname + 'public/js'));
 app.use('/images', express.static(__dirname + 'public/images'));
-
-/** **********************************
+/*************************************
  * Routes
- ************************************ */
+ **************************************/
 app.set('view engine', 'ejs');
 app.set('views', './views');
 app.get('/', (req, res) =>
@@ -32,6 +32,7 @@ app.get('/', (req, res) =>
   res.render('index');
 });
 
+/***Goes to the dog buddies in the chosen park.***/
 app.get('/overzicht', async (req, res) =>
 {
   if (req.query && req.query.park)
@@ -52,6 +53,7 @@ app.get('/blokjesoverzicht', (req, res) =>
   res.render('includes/blokjesoverzicht', { hondenmaatjes: hondenmaatjes });
 });
 
+/***DetailPages dog buddies***/
 app.get('/detailpagina-maria-asha', (req, res) =>
 {
   res.render('detailpagina-maria-asha');
@@ -77,6 +79,7 @@ app.get('/detailpagina-rayza-boef', (req, res) =>
   res.render('detailpagina-rayza-boef');
 });
 
+/***The form.***/
 app.get('/formulier', async (req, res) =>
 {
   const query = {};
@@ -115,16 +118,13 @@ app.post('/formulier', async (req, res) =>
   //redirect back to formulier with get to update on-screen info
   res.redirect('/formulier');
 });
-
 /*****************************************************
  * 404
  ****************************************************/
 app.use(function (req, res)
 {
-  //res.status(404).render('404', {title:"Error 404: file not found"}); << no idea Y I Put This Here ¯\_(ツ)_/¯
   res.status(404).send('Error 404: file not found')
 });
-
 /*****************************************************
  * Connect to database
  ****************************************************/
@@ -143,7 +143,6 @@ async function connectDB()
   {
     throw error;
   }
-
 }
 /** *********************************
  * Start Webserver
