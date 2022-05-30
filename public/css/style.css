@@ -29,9 +29,9 @@ header>ul {
    border-radius: 50%;
 
 
-      display: block;
-      margin-left: auto;
-      margin-right: auto;
+   display: block;
+   margin-left: auto;
+   margin-right: auto;
 
 }
 
@@ -46,9 +46,11 @@ button:link {
 
 }
 
-button:visited { background-color: blueviolet;}
+button:visited {
+   background-color: blueviolet;
+}
 
-button:hover { 
+button:hover {
    background-color: #512924;
    border-radius: 20px;
    filter: drop-shadow(8px 8px 5px #9C625B);
@@ -56,7 +58,7 @@ button:hover {
 
 button:active {
    background-color: #C9928C;
-   filter:none;
+   filter: none;
 }
 
 a:link {
@@ -68,16 +70,16 @@ a:visited {
 }
 
 a:hover {
-   text-decoration:underline;
+   text-decoration: underline;
 }
 
 a:active {
-   text-decoration:none;
+   text-decoration: none;
    color: black;
 }
 
 .linkoverzicht:link {
-   color:black;
+   color: black;
 }
 
 .linkoverzicht:hover {
@@ -119,21 +121,21 @@ header h1 {
 }
 
 h2 {
- font-family: 'Quicksand', sans-serif;  
-  text-transform: uppercase;
+   font-family: 'Quicksand', sans-serif;
+   text-transform: uppercase;
    text-align: center;
 }
 
 p {
    font-family: 'Bentham', serif;
-   font-size:23px;
+   font-size: 23px;
 
 
 }
 
 .hometext {
    font-family: 'Bentham', serif;
-   font-size:28px;
+   font-size: 28px;
    text-align: center;
    max-width: 75%;
    /* font-style: italic; */
@@ -146,8 +148,8 @@ p {
    flex-direction: column;
    justify-content: center;
    margin-top: 100px;
-   max-width: 100%; 
-   padding-left: 0; 
+   max-width: 100%;
+   padding-left: 0;
 }
 
 .checkinmain li {
@@ -161,23 +163,25 @@ footer {
    margin-top: 25px;
 }
 
-header > ul li:nth-of-type(1) {
-   padding-left:10px;
-   padding-top:10px;
+header>ul li:nth-of-type(1) {
+   padding-left: 10px;
+   padding-top: 10px;
 }
 
-header > ul li:nth-of-type(3) {
+header>ul li:nth-of-type(3) {
    padding-right: 10px;
    padding-top: 10px;
 }
-.checkinmain li:nth-of-type(3)  {
+
+.checkinmain li:nth-of-type(3) {
    display: flex;
    justify-content: center;
 }
-.checkinmain  p {
-  max-width:55%;
+
+.checkinmain p {
+   max-width: 55%;
    text-align: center;
-   margin-right:0;
+   margin-right: 0;
 
 }
 
@@ -185,12 +189,13 @@ header > ul li:nth-of-type(3) {
 /***************************************OVERZICHT.HTML PAGINA*****************************/
 
 .achtergrondkleur {
-   background-color:#D8CFCD;
+   background-color: #D8CFCD;
 }
 
-.overzichtblok, .overzichtblok a {
+.overzichtblok,
+.overzichtblok a {
    display: flex;
-   flex-direction:column;
+   flex-direction: column;
    flex-wrap: wrap;
    background-color: white;
    width: 100%;
@@ -203,7 +208,7 @@ header > ul li:nth-of-type(3) {
 .overzicht {
    display: flex;
    flex-direction: column;
-   gap:20px;
+   gap: 20px;
 }
 
 
@@ -226,27 +231,27 @@ header > ul li:nth-of-type(3) {
 
 .overzichtblok ul:nth-of-type(1) {
    display: flex;
-   justify-content: space-between; 
+   justify-content: space-between;
    padding-left: 0;
-   margin:0;
+   margin: 0;
 
 }
 
 .steekwoorden {
    display: flex;
    justify-content: space-between;
-   gap:1; 
+   gap: 1;
    padding-left: 0;
    flex-wrap: wrap;
    max-width: 65%;
-   margin:0;
+   margin: 0;
    padding-left: 5px;
-   text-transform:capitalize;
+   text-transform: capitalize;
 }
 
 
 
-.overzichtblok > .infoblok ul:nth-of-type(2) li p{
+.overzichtblok>.infoblok ul:nth-of-type(2) li p {
    width: 50%;
 }
 
@@ -259,14 +264,14 @@ header > ul li:nth-of-type(3) {
    text-transform: uppercase;
 }
 
-.detailtekst  p {
+.detailtekst p {
    text-align: center;
 }
 
 .dubbelbutton {
    display: flex;
    flex-direction: column;
-   gap:10px;
+   gap: 10px;
 }
 
 /* Style The Dropdown Button */
@@ -279,27 +284,27 @@ header > ul li:nth-of-type(3) {
    cursor: pointer;
    text-transform: uppercase;
 
- }
- 
- /* The container <div> - needed to position the dropdown content */
- /* #dropdown {
+}
+
+/* The container <div> - needed to position the dropdown content */
+/* #dropdown {
    position: relative;
    display: inline-block;
   } */
- 
- /* Dropdown Content (Hidden by Default) */
- .dropdown-content {
+
+/* Dropdown Content (Hidden by Default) */
+.dropdown-content {
    display: none;
    min-width: 160px;
-   box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+   box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
    z-index: 1;
    border-radius: 10px;
    text-align: center;
 
- }
- 
- /* Links inside the dropdown */
- .dropdown-content a {
+}
+
+/* Links inside the dropdown */
+.dropdown-content a {
    color: black;
    padding: 12px 16px;
    text-decoration: none;
@@ -308,74 +313,76 @@ header > ul li:nth-of-type(3) {
    box-shadow: 0px 0px 8px 0px #512924;
    padding-bottom: 15px;
    padding-top: 15px;
-   font-family: 'Quicksand', sans-serif;  
- }
- 
- /* Change color of dropdown links on hover */
- .dropdown-content a:hover {background-color: #f1f1f1}
- 
- /* Show the dropdown menu on hover */
- #dropdown:hover .dropdown-content {
+   font-family: 'Quicksand', sans-serif;
+}
+
+/* Change color of dropdown links on hover */
+.dropdown-content a:hover {
+   background-color: #f1f1f1
+}
+
+/* Show the dropdown menu on hover */
+#dropdown:hover .dropdown-content {
    display: block;
- }
- 
- /* Change the background color of the dropdown button when the dropdown content is shown */
- #dropdown:hover .dropbtn {
+}
+
+/* Change the background color of the dropdown button when the dropdown content is shown */
+#dropdown:hover .dropbtn {
    background-color: #bca8a6;
- }
+}
 
- /*formulier*/
- form input{
-    max-width: 100%;
-    padding: 10px;
-    padding-right: 75%;
-    box-sizing: border-box;
-    font-family: 'Bentham', serif;
-    font-size:23px;
- }
+/*formulier*/
+form input {
+   max-width: 100%;
+   padding: 10px;
+   padding-right: 75%;
+   box-sizing: border-box;
+   font-family: 'Bentham', serif;
+   font-size: 23px;
+}
 
- /* form {
+/* form {
     display: flex;
     flex-direction: row;
  } */
 
- .formulier li {
+.formulier li {
    /* display: flex;
    justify-content: center; */
- }
+}
 
- .formulier p {
-    font-size: 50px;
- }
- 
+.formulier p {
+   font-size: 50px;
+}
 
- .formulier button {
-    padding-top: 20px;
-    padding-right: 40px;
-    padding-bottom: 20px;
-    padding-left: 40px;
-    margin-top: 20px;
-    /* margin-right: 40px;
+
+.formulier button {
+   padding-top: 20px;
+   padding-right: 40px;
+   padding-bottom: 20px;
+   padding-left: 40px;
+   margin-top: 20px;
+   /* margin-right: 40px;
     margin-left: 40px; */
-    font-size: 20px;
-    /* display: flex;
+   font-size: 20px;
+   /* display: flex;
     flex-direction:row; */
-    color:#D8CFCD;   
+   color: #D8CFCD;
 
 
- }
+}
 
 
- label {
+label {
    font-family: 'Bentham', serif;
-   font-size:23px;
- }
+   font-size: 23px;
+}
 
- .hidden {
-    display: none;
- }
+.hidden {
+   display: none;
+}
 
-.checkinmain > ul li:nth-of-type(5) {
+.checkinmain>ul li:nth-of-type(5) {
    display: flex;
    justify-content: center;
 }
