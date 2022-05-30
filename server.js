@@ -35,7 +35,7 @@ app.get('/', (req, res) =>
   res.render('index');
 });
 
-/***Goes to the dog buddies in the chosen park.***/
+/***Goes to the dog buddies in the chosen park.(Data from database)***/
 app.get('/overzicht', async (req, res) =>
 {
   if (req.query && req.query.park)
