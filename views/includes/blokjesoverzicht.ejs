@@ -1,40 +1,44 @@
 <% for(var i=0; i<hondenmaatjes.length; i++) {%>
 
-
+<%#This part is the dynamic part that shows te dog buddies with their information in the chosen park. Most of the Data comes out of the database.%>
 <div class="overzichtblok">
     <a class="linkoverzicht" href="detailpagina-<%= hondenmaatjes[i].slug%>">
-
-    <div class="infoblok">
-        <ul>
-            <li>
-                <img class="profielfotomiddel" src="/images/<%= hondenmaatjes[i].slug%>.jpg" width="200" height="300"
-                alt="<%= hondenmaatjes[i].name%>">
-
-                <h2><%= hondenmaatjes[i].name%>
-                    <% if(i == 0) {%>
-                    <svg xmlns="http://www.w3.org/2000/svg" width="32.001" height="30.401" viewbox="0 0 32.001 30.401">
-                    <path id="Path_1" data-name="Path 1"
-                    d="M16,0l5,10,11,1.6-8,7.8,1.8,11L16,25.2,6.2,30.4,8,19.4,0,11.6,11,10Z" fill="#9c625b" />
-                    </svg>
-                    <%}%>
-                </h2>
-                    <h3><%= hondenmaatjes[i].years[0]%> en <%= hondenmaatjes[i].years[1]%> </h3> 
-            </li>
-            <li>
-                <p> <%= hondenmaatjes[i].park%> <svg id="Location_2" data-name="Location  2" xmlns="http://www.w3.org/2000/svg" width="25" height="25"
-                    viewbox="0 0 25 25">
-                    <rect id="Rectangle_305" data-name="Rectangle 305" width="25" height="25" transform="translate(0 0)"
-                    fill="none" />
-                    <path id="Path_114" data-name="Path 114"
-                    d="M9.391,13.554A3.982,3.982,0,0,0,13.38,9.566,4.1,4.1,0,0,0,9.391,5.434,3.982,3.982,0,0,0,5.4,9.423,4.2,4.2,0,0,0,9.391,13.554ZM2.7,2.728A9.469,9.469,0,0,1,16.087,16.119l-6.7,6.7-6.7-6.7A9.727,9.727,0,0,1,2.7,2.728Z"
-                    transform="translate(0.975 0.05)" fill-rule="evenodd" />
-                </svg></p>
-            </li>
-        </ul>
-                <p class="steekwoorden"><%= hondenmaatjes[i].keywords%></p>
-
-
-    </div>    
+        <div class="infoblok">
+            <ul>
+                <li>
+                    <%#This part is the profile picture%>
+                    <img class="profielfotomiddel" src="/images/<%= hondenmaatjes[i].slug%>.jpg" width="200"
+                        height="300" alt="<%= hondenmaatjes[i].name%>">
+                    <%#This part is the names%>
+                    <h2><%= hondenmaatjes[i].name%>
+                        <% if(i == 0) {%>
+                        <svg xmlns="http://www.w3.org/2000/svg" width="32.001" height="30.401"
+                            viewbox="0 0 32.001 30.401">
+                            <path id="Path_1" data-name="Path 1"
+                                d="M16,0l5,10,11,1.6-8,7.8,1.8,11L16,25.2,6.2,30.4,8,19.4,0,11.6,11,10Z"
+                                fill="#9c625b" />
+                        </svg>
+                        <%}%>
+                    </h2>
+                    <%#This part are the ages%>
+                        <h3><%= hondenmaatjes[i].years[0]%> en <%= hondenmaatjes[i].years[1]%> </h3>
+                </li>
+                <li>
+                    <%#This part is their location(the park they in)%>
+                    <p> <%= hondenmaatjes[i].park%> <svg id="Location_2" data-name="Location  2"
+                            xmlns="http://www.w3.org/2000/svg" width="25" height="25" viewbox="0 0 25 25">
+                            <rect id="Rectangle_305" data-name="Rectangle 305" width="25" height="25"
+                                transform="translate(0 0)" fill="none" />
+                            <path id="Path_114" data-name="Path 114"
+                                d="M9.391,13.554A3.982,3.982,0,0,0,13.38,9.566,4.1,4.1,0,0,0,9.391,5.434,3.982,3.982,0,0,0,5.4,9.423,4.2,4.2,0,0,0,9.391,13.554ZM2.7,2.728A9.469,9.469,0,0,1,16.087,16.119l-6.7,6.7-6.7-6.7A9.727,9.727,0,0,1,2.7,2.728Z"
+                                transform="translate(0.975 0.05)" fill-rule="evenodd" />
+                        </svg>
+                    </p>
+                </li>
+            </ul>
+            <%#This part is the keywords%>
+            <p class="steekwoorden"><%= hondenmaatjes[i].keywords%></p>
+        </div>
     </a>
 </div>
 <%}%>

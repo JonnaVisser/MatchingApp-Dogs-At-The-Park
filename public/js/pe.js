@@ -11,5 +11,6 @@ function enableMap()
         console.log("waiting for document to be ready before switching on the map");
     }
 }
+// remove event listeners on each reload to prevent multi-trigger behavior
 document.removeEventListener("readystatechange", enableMap);
 document.addEventListener("readystatechange", enableMap);

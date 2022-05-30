@@ -7,11 +7,13 @@ const arrayify = require('array-back');
 const dotenv = require('dotenv').config();
 const { MongoClient } = require('mongodb');
 const { ObjectId } = require('mongodb');
+
 /***************************************
  * Constants and Variables
  **************************************/
 const app = express();
 let db = null;
+
 /***************************************
  * Middleware
  ***************************************/
@@ -22,6 +24,7 @@ app.use('/html', express.static(__dirname + 'public/html'));
 app.use('/css', express.static(__dirname + 'public/css'));
 app.use('/js', express.static(__dirname + 'public/js'));
 app.use('/images', express.static(__dirname + 'public/images'));
+
 /*************************************
  * Routes
  **************************************/
@@ -118,6 +121,7 @@ app.post('/formulier', async (req, res) =>
   //redirect back to formulier with get to update on-screen info
   res.redirect('/formulier');
 });
+
 /*****************************************************
  * 404
  ****************************************************/
@@ -125,6 +129,7 @@ app.use(function (req, res)
 {
   res.status(404).send('Error 404: file not found')
 });
+
 /*****************************************************
  * Connect to database
  ****************************************************/
@@ -144,6 +149,7 @@ async function connectDB()
     throw error;
   }
 }
+
 /** *********************************
  * Start Webserver
  *********************************** */

@@ -11,6 +11,7 @@ L.tileLayer('https://api.mapbox.com/styles/v1/{id}/tiles/{z}/{x}/{y}?access_toke
         accessToken: 'sk.eyJ1Ijoiam9ubmEtdmlzc2VyIiwiYSI6ImNsM2hocG01bjFieHIzZXBya3ZyZGlzdHIifQ.JufH8HEp6qLJANvF9gsg-A'
     }).addTo(map);
 
+//Function when client allows to share their location
 function redrawMap()
 {
     console.log("redrawing map");
@@ -22,6 +23,7 @@ function redrawMap()
     }, 300);
 }
 
+//Function when client block to share their location
 function disableMap()
 {
     console.log("removing map");
@@ -34,6 +36,7 @@ function disableMap()
     }, 300);
 }
 
+//Geolocation
 function getUserLocationAndSetMap()
 {
     // get user location + ask for permission. Upon denial, remove map, show dropdown

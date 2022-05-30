@@ -19,6 +19,7 @@
             </li>
             <% for(var i=0; i<honden.length; i++) {%>
             <li>
+                <%#In this form you can update or delete your dogs%>
                 <form action="/formulier" method="post">
                     <input type="hidden" name="id" value="<%= honden[i]._id%>" />
                     <label>Naam</label><br>
@@ -34,6 +35,7 @@
                 <p>Toevoegen</p>
             </li>
             <li>
+                <%#In this form you can add a woof%>
                 <form action="/formulier" method="post" name="toevoegen">
                     <label>Naam</label><br>
                     <input type="text" name="naam" id="naam" /><br>
