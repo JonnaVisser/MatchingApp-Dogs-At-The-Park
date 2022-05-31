@@ -16,15 +16,22 @@ A code editor
 
 **Get started:**
 1. Clone the repo
-   >https://github.com/JonnaVisser/MatchingApp-Dogs-At-The-Park
+   ```
+   https://github.com/JonnaVisser/MatchingApp-Dogs-At-The-Park
+   ```
 2. Install NPM packages
-   >npm install
+   ```
+   npm install
+   ```
 3. Add a .env file
-   >PORT=<PORT NUMMER>
-   >
-   >CONNECTION_STRING=<DATABASE CONNECTION STRING>
+   ```
+   PORT=<PORT NUMMER>
+   CONNECTION_STRING=<DATABASE CONNECTION STRING>
+   ```
 4. Run application
-   >npm start`
+   ```
+   npm start
+   ```
 
 ## License
 [MIT License](https://github.com/JonnaVisser/MatchingApp-Dogs-At-The-Park/blob/main/LICENSE)
