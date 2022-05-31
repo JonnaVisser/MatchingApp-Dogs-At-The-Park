@@ -21,6 +21,7 @@ A code editor
    >npm install
 3. Add a .env file
    >PORT=<PORT NUMMER>
+   >
    >CONNECTION_STRING=<DATABASE CONNECTION STRING>
 4. Run application
    >npm start`
