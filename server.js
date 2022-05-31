@@ -156,6 +156,5 @@ async function connectDB()
 app.listen(process.env.PORT, () =>
 {
   console.log(`web server  running on http://localhost:${process.env.PORT}`);
-  console.log(process.env.TESTVAR)
   connectDB().then(console.log("we have a connection"))
 });
