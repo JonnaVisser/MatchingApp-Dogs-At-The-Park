@@ -1,4 +1,4 @@
-#  :dog::dog::dog::dog::dog:MatchingApp-Dogs-In-The-Park:dog::dog::dog::dog::dog:
+#  :dog::dog::dog:MatchingApp-Dogs-In-The-Park:dog::dog::dog:
 ## The Concept 
 The concept is a matching app to match dog owners in the park. So, the idea is that dog owners can meet each other in the park through the app. With this idea it's possible to get to know the dog owners in the neighbourhood and to become dog buddies with your neighbours.
 ## The Feature
